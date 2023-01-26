@@ -23,6 +23,9 @@ public class FirstAPITest {
 		// Assert that correct status code is returned.
 		Assert.assertEquals(statusCode,200);
 		Reporter.log("Success 200 validation");
+		
+		response.then().body("data.first_name", equalTo("Janet"));
+		Reporter.log(response.body().asString());
   }
   @BeforeMethod
   public void beforeMethod() {
