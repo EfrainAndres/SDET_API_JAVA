@@ -2,6 +2,8 @@ package com.unosquare;
 
 import org.testng.annotations.Test;
 
+import com.unosquare.base.BaseTest;
+
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -10,8 +12,6 @@ import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-
 import static org.hamcrest.Matchers.equalTo;
 
 import java.io.FileReader;
@@ -23,14 +23,13 @@ import org.json.simple.parser.ParseException;
 
 import static io.restassured.RestAssured.*;
 
-public class FirstAPITest {
+public class FirstAPITest extends BaseTest {
 
-	ApiCore apiCore;
+
 	@Test
 	public void f() {
-		RestAssured.baseURI = "https://reqres.in/api/";
 		RequestSpecification httpRequest = RestAssured.given();
-		Response response = httpRequest.get("/users/2");
+		Response response = httpRequest.get("/api/users/2");
 
 		int statusCode = response.getStatusCode();
 
@@ -76,7 +75,6 @@ public class FirstAPITest {
 
 	@Test
 	public void PostRegister() throws IOException, ParseException {
-		RestAssured.baseURI = "https://reqres.in/";
 		JSONParser json = new JSONParser();
 		FileReader jsonFile = new FileReader("src/test/resources/Json/Register.json");
 		Object obj = json.parse(jsonFile);
@@ -98,14 +96,9 @@ public class FirstAPITest {
 
 	@Test
 	public void PostLogin() throws IOException, ParseException {
-		Response test = apiCore.PostLogin("src/test/resources/Json/Login.json", "/login");
+		Response test = apiCore.postRequest("src/test/resources/Json/Login.json", "/api/login");
 
 		Assert.assertEquals(200, test.statusCode());
-	}
-
-	@BeforeSuite
-	public void beforeSuite() {
-		apiCore = new ApiCore();
 	}
 
 	@BeforeMethod
