@@ -2,12 +2,11 @@ package com.unosquare;
 
 import org.testng.annotations.Test;
 
-import com.unosquare.base.BaseTest;
-
 import io.restassured.response.Response;
 import junit.framework.Assert;
 
-public class GetRequestAPITest extends BaseTest {
+public class GetRequestAPITest {
+	ApiCore apiCore = new ApiCore();
 
 	@Test
 	public void testListUsers() {

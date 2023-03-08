@@ -3,7 +3,10 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="com.unosquare.FirstAPITest"/>
+      <class name="com.unosquare.base.BaseTest"></class>
+      <class name="com.unosquare.GetRequestAPITest"></class>
+      <class name="com.unosquare.PostRequestAPITest"></class>
+      <class name="com.unosquare.PutRequestAPITest"></class>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -6,12 +6,11 @@ import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.unosquare.base.BaseTest;
-
 import io.restassured.response.Response;
 
-public class PostRequestAPITest extends BaseTest {
+public class PostRequestAPITest {
 	
+	ApiCore apiCore = new ApiCore();
 	@Test
 	public void testSuccessfulRegister() throws IOException, ParseException {
 		Response successfulRegister = apiCore.postRequest("src/test/resources/Json/Register.json", "/api/register");

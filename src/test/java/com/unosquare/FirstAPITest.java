@@ -23,8 +23,8 @@ import org.json.simple.parser.ParseException;
 
 import static io.restassured.RestAssured.*;
 
-public class FirstAPITest extends BaseTest {
-
+public class FirstAPITest {
+	ApiCore apiCore = new ApiCore();
 
 	@Test
 	public void f() {
